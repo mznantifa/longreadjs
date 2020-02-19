@@ -1,6 +1,7 @@
 const express    = require('express'),
       morgan     = require('morgan'),
-      bodyParser = require('body-parser')
+      bodyParser = require('body-parser'),
+      path       = require('path'),
       app        = express()
 
 const config     = require('./app/config/app.config.json'),
