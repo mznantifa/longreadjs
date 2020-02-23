@@ -108,3 +108,6 @@ dist
 
 # App config
 app/config/*.config.json
+
+# Site-specific
+site/
