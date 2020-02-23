@@ -1,8 +1,6 @@
-module.exports = (app, site) => {
-    app.get('*', (req, res) => renderSimple('index', res, site))
-}
+const articleController = require('./controllers/article.controller')
 
-renderSimple = (template, res, site) => res.render(template, { site: site })
-renderStory  = (storyid, res, site) => {
-    res.sendStatus(404)
+module.exports = (app, site) => {
+    app.get('/:id', (req, res) => articleController.show(req, res, site))
+    app.get('/', (req, res) => articleController.index(req, res, site))
 }
