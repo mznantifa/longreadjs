@@ -1,26 +1,30 @@
-const fs = require('fs')
+const fs   = require('fs'),
+      path = require('path')
 
 module.exports.list = () => {
-    // read directories in ../../site/articles and try to return an array of Article objects for each
+    var articles = getDirectories(path.join(__dirname, '../../site/articles'))
+    return articles.map(a => module.exports.find(a))
 }
 
-module.exports.find = (article_id) => {
+module.exports.find = article_id => {
     var article = {
-        content: '',
-        config: {},
+        config: false,
         article_id: article_id
     }
-    var valid_find = false
 
-    fs.readFile('../../site/articles/' + this.article_id + '/article.config.json', (err, data) => {
-        if(err) return false
-        article.config = JSON.parse(data)
-        fs.readFile('../../site/articles/' + this.article_id + '/content.xml', (err, data) => {
-            if(err) return false
-            article.content = data
-            valid_find = true
-        })
-    })
-    if(valid_find) return article
-    return false
+    try {
+        article.config = JSON.parse(
+            fs.readFileSync(path.join(articlePathFromId(article_id), 'article.config.json'))
+        )
+    } catch(err) {
+        return false
+    }
+    
+    return article
 }
+
+const articlePathFromId = article_id => {
+    return path.join(__dirname, '../../site/articles', article_id)
+}
+
+const getDirectories = p => fs.readdirSync(p).filter(f => fs.statSync(path.join(p, f)).isDirectory())

@@ -1,0 +1,10 @@
+html
+    head
+        include includes/head.pug
+        title #{article.config.title} | #{site.title}
+    body
+        .container
+            .row.pt-5
+                .col-12
+                    h2= article.config.title
+                    p !{Render(article.article_id, 1, article.config)}
