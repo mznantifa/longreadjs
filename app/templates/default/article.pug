@@ -3,8 +3,8 @@ html
         include includes/head.pug
         title #{article.config.title} | #{site.title}
     body
-        .container
-            .row.pt-5
-                .col-12
-                    h2= article.config.title
-                    p !{Render(article.article_id, 1, article.config)}
+        .title-slide
+            .title-slide-cover
+                h1.title-slide-title= article.config.title
+                small.title-slide-subtitle= article.config.date + ' • ' + article.config.author
+        div !{Render(article.article_id, 1, article.config)}
