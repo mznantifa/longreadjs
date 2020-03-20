@@ -14,7 +14,7 @@ app.use(morgan('dev'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
-app.use('/assets', express.static(path.join(__dirname, 'app/assets')))
+app.use('/assets', express.static(path.join(__dirname, 'app/templates', site.template, 'assets')))
 
 require('./app/routes')(app, site)
 

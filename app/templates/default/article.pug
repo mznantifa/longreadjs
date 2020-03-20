@@ -3,8 +3,17 @@ html
         include includes/head.pug
         title #{article.config.title} | #{site.title}
     body
+        if site.top_bar
+            .top-bar
+                a(href=site.top_bar_url)
+                    img.top-bar-logo-img(src=site.uri+'site/assets/'+site.top_bar_image)
         .title-slide
             .title-slide-cover
                 h1.title-slide-title= article.config.title
                 small.title-slide-subtitle= article.config.date + ' • ' + article.config.author
+        if article.config.background_image
+            style(type="text/css").
+                .title-slide { background-image: url("#{site.uri}#{article.article_id}/assets/#{article.config.background_image}"); }
         div !{Render(article.article_id, 1, article.config)}
+        script(src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous")
+        script(style='text/javascript' src=site.uri+'assets/article.longread.js')

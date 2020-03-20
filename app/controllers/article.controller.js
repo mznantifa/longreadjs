@@ -1,4 +1,6 @@
-const articleModel = require('../models/article.model')
+const fs           = require('fs'),
+      path         = require('path'),
+      articleModel = require('../models/article.model')
 
 module.exports.index = (req, res, site) => {
     var articles = articleModel.list()
