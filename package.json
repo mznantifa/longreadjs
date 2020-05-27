@@ -8,13 +8,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/mznantifa/longreadjs.git"
+    "url": "https://github.com/eazee/longreadjs.git"
   },
-  "keywords": ["webapp", "articles", "reading", "customizable"],
+  "keywords": [
+    "webapp",
+    "articles",
+    "reading",
+    "customizable"
+  ],
   "author": "Marzena",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/mznantifa/longreadjs/issues"
+    "url": "https://github.com/eazee/longreadjs/issues"
   },
   "dependencies": {
     "body-parser": "^1.19.0",

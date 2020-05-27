@@ -24,11 +24,10 @@ const cacheOrConvert = (article_id, content_path) => {
         if(cache_time >= conte_time) {
             console.log('Loading article ' + article_id + ' from cache!')
             return fs.readFileSync(cache_path)
-        } else {
-            console.log('Rendering article ' + article_id)
-            return convertFile(cache_path, content_path)
         }
     }
+    console.log('Rendering article ' + article_id)
+    return convertFile(cache_path, content_path)
 }
 
 // Convert file to styleable HTML and save it in cache
